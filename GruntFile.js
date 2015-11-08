@@ -58,7 +58,7 @@ module.exports = function(grunt) {
             },
             js: {
             	files: 'js/**.js',
-                tasks: 'produce-js'
+                tasks: 'prepare-js'
             },
             html: {
 		        files: ['<%= dirs.dest %>/*.html'],
@@ -75,6 +75,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-open');
     grunt.registerTask('default',['sass:dev', 'jshint', 'uglify']);
-    grunt.registerTask('produce-js',['jshint', 'uglify']);
+    grunt.registerTask('prepare-js',['jshint', 'uglify']);
     grunt.registerTask('server',['connect', 'watch']);
 };    
