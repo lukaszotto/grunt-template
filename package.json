@@ -1,0 +1,17 @@
+{
+  "name": "grunt-template",
+  "version": "1.0.0",
+  "description": "template for grunt tasks",
+  "main": "index.js",
+  "dependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-sass": "",
+    "grunt-contrib-watch": ""
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Lukasz Otto",
+  "license": "ISC"
+}
