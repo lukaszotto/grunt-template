@@ -1,0 +1,21 @@
+{
+  "name": "project",
+  "description": "description",
+  "main": "index.js",
+  "authors": [
+    "Lukasz Otto"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/lukaszotto/grunt-template",
+  "moduleType": [],
+  "dependencies": {
+  	"jQuery": ""
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

@@ -5,7 +5,8 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         dirs: {
-        	dest: "html"
+        	dest: "html",
+        	bower: "bower_components"
         },
         jshint: {
 		    beforeuglify: ['js/*.js']
@@ -15,8 +16,11 @@ module.exports = function(grunt) {
 		        banner: '/*! package name <%= grunt.template.today("yyyy-mm-dd") %> */\n'
 		    },
 		    build: {
-		        src: 'js/*.js',
-		        dest: '<%= dirs.dest %>/js/scripts.min.js'
+		    	files: {
+		    		'<%= dirs.dest %>/js/scripts.js': ['js/*.js'],
+			        '<%= dirs.dest %>/js/libs.js': 
+			        	['<%= dirs.bower %>/jQuery/dist/jQuery.js']
+			    }
 		    }
 		},
 		connect: {
