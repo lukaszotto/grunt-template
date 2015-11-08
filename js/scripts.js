@@ -3,4 +3,4 @@
 	var test;
 	test = 'success';
 	console.log(test);
-});
+}());

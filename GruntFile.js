@@ -7,21 +7,33 @@ module.exports = function(grunt) {
         dirs: {
         	dest: "html"
         },
+        jshint: {
+		    beforeuglify: ['js/*.js']
+		},
+        uglify: {
+		    options: {
+		        banner: '/*! package name <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+		    },
+		    build: {
+		        src: 'js/*.js',
+		        dest: '<%= dirs.dest %>/js/scripts.min.js'
+		    }
+		},
         sass: {
             dev: {
                 options: {
-                  style: 'expanded'
+                    style: 'expanded'
                 },
                 files: {
-                  '<%= dirs.dest %>/css/style.css' : 'sass/style.sass'
+                    '<%= dirs.dest %>/css/style.css' : 'sass/style.sass'
                 }
             },
             dist: {
                 options: {
-                  style: 'compressed'
+                    style: 'compressed'
                 },
                 files: {
-                  '<%= dirs.dest %>/css/style.css' : 'sass/style.sass'
+                    '<%= dirs.dest %>/css/style.css' : 'sass/style.sass'
                 }
             }
         },
@@ -29,10 +41,18 @@ module.exports = function(grunt) {
             css: {
                 files: 'sass/**.sass',
                 tasks: 'sass'
+            },
+            js: {
+            	files: 'js/**.js',
+                tasks: 'produce-js'
             }            
         },
     });
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.registerTask('default',['sass:dev']);
+    grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.registerTask('default',['sass:dev', 'jshint', 'uglify']);
+    grunt.registerTask('produce-js',['jshint', 'uglify']);
+    
 };    
