@@ -19,6 +19,16 @@ module.exports = function(grunt) {
 		        dest: '<%= dirs.dest %>/js/scripts.min.js'
 		    }
 		},
+		connect: {
+		    server: {
+		        options: {
+		          port: 9001,
+		          base: 'html',
+		          liveReload: true,
+		          open: true
+		        }
+		    }
+		},
         sass: {
             dev: {
                 options: {
@@ -45,6 +55,12 @@ module.exports = function(grunt) {
             js: {
             	files: 'js/**.js',
                 tasks: 'produce-js'
+            },
+            html: {
+		        files: ['<%= dirs.dest %>/*.html'],
+		    },
+            options: {
+            	livereload: true
             }            
         },
     });
@@ -52,7 +68,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-open');
     grunt.registerTask('default',['sass:dev', 'jshint', 'uglify']);
     grunt.registerTask('produce-js',['jshint', 'uglify']);
-    
+    grunt.registerTask('server',['connect', 'watch']);
 };    
