@@ -1,6 +1,6 @@
 (function () {
 	'use strict';
 	var test;
-	test = 'success2';
+	test = 'success';
 	console.log(test);
 }());
